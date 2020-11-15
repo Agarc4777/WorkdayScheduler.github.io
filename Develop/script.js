@@ -18,7 +18,6 @@ for (var i = 9; i < 18; i++) {
 
     timeBlock.append(timeSpan, input, button);
     $(".container").append(timeBlock);
-    console.log(input)
 }
 
 //uses input and pulls it back when refreshed.
@@ -34,29 +33,31 @@ for(var i = 0; i < saveButtons.length; i++) {
     saveButtons[i].addEventListener("click", saveBtnHandler);
 }
 
+$(".time-span").addClass("hour");
+$(".time-block").addClass("row");
+$(".saveBtn").addClass("saveBtn");
+
 $(".description").each(time);
 
 var timeSpanArray = $('.time-span');
 
 console.log('timeSpanArray:', timeSpanArray);
 
-
-
 // function to change the color of the page and the format.
 function time () {
-    var time = ($(this).attr("time-block"))
+    var time = ($(this).attr(".timeBlock"));
     
+
     if (time == now.hours) {
         //code goes in here to add css to color code the page to present
-        $("#time-block").addClass(".present");
+        $(this).addClass("present");
     }  else if (time < now.hours) {
         //code goes in here to add css to color code the page to past
-        $("#time-block").addClass(".past");
+        $(this).addClass("past");
     } else {
         //code goes in here to add css to color code the page to future
-        $("#time-block").addClass(".future");
+        $(this).addClass("future");
     }
-
 
 }
 
