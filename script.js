@@ -33,9 +33,7 @@ for(var i = 0; i < saveButtons.length; i++) {
     saveButtons[i].addEventListener("click", saveBtnHandler);
 }
 
-$(".time-span").addClass("hour");
-$(".time-block").addClass("row");
-$(".saveBtn").addClass("saveBtn");
+
 
 $(".description").each(time);
 
@@ -48,15 +46,15 @@ function time () {
     var time = ($(this).attr(".timeBlock"));
     
 
-    if (time == now.hours) {
+    if (time == now.hours()) {
         //code goes in here to add css to color code the page to present
-        $(this).addClass("present");
+        $("#time-block").addClass("present");
     }  else if (time < now.hours) {
         //code goes in here to add css to color code the page to past
-        $(this).addClass("past");
+        $("#time-block").addClass("past");
     } else {
         //code goes in here to add css to color code the page to future
-        $(this).addClass("future");
+        $("#time-block").addClass("future");
     }
 
 }
