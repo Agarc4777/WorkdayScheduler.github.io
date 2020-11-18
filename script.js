@@ -6,17 +6,20 @@ $("#currentDay").text(now.format('MMMM Do YYYY'));
 //dynamically create the div elements
 //add id or data attribute to input or button or both that stores the current hour.
 for (var i = 9; i < 18; i++) {
-    var timeBlock = $("<div class='time-block' data-id='time-block'></div>")
-    var timeSpan = $("<span class='time-span' data-id='"+i+"'>" + i + ":00</span>")
+    var timeClass = calTime (i)
+    var timeBlock = $("<div class='time-block row' data-id='time-block'></div>")
+    var timeDiv = $("<div class='hour'>")
+    var timeSpan = $("<span class='time-span' data-id='"+i+"' style='width:3rem'>" + i + ":00</span>")
+    timeDiv.append(timeSpan)
     var input = $('<input class="description" data-id="input" data-hour="'+i+'"></input>')
-
+    input.addClass(timeClass)
     //use local storage to link the i and previous inputs to auto fill the data.
 
     var oldInput = localStorage.getItem(i);
     input.val(oldInput);
     var button = $("<button class='saveBtn'>Save</button>")
 
-    timeBlock.append(timeSpan, input, button);
+    timeBlock.append(timeDiv, input, button);
     $(".container").append(timeBlock);
 }
 
@@ -33,28 +36,22 @@ for(var i = 0; i < saveButtons.length; i++) {
     saveButtons[i].addEventListener("click", saveBtnHandler);
 }
 
-
-
-$(".description").each(time);
-
 var timeSpanArray = $('.time-span');
 
 console.log('timeSpanArray:', timeSpanArray);
 
 // function to change the color of the page and the format.
-function time () {
-    var time = ($(this).attr(".timeBlock"));
-    
+function calTime (hour) {
 
-    if (time == now.hours()) {
+    if (hour == now.hours()) {
         //code goes in here to add css to color code the page to present
-        $("#time-block").addClass("present");
-    }  else if (time < now.hours) {
+        return "present"
+    }  else if (hour < now.hours()) {
         //code goes in here to add css to color code the page to past
-        $("#time-block").addClass("past");
-    } else {
+        return "past"
+        } else {
         //code goes in here to add css to color code the page to future
-        $("#time-block").addClass("future");
+        return "future"
     }
 
 }

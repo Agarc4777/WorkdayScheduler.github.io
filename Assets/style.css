@@ -23,32 +23,42 @@ textarea{
 
 .description{
   white-space: pre-wrap;
+  flex-grow: 1;
 }
 
 .time-block{
   text-align: center;
   border-radius: 15px;
+  display: flex;
+  justify-content: center;
 }
 
 .row {
   white-space: pre-wrap;
   height: 80px;
-  border-top: 1px solid white;;
+  border-top: 1px solid white;
+
 }
 
 .hour {
-  background-color: #ffffff;
+  border-left: 1px solid black;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+  background-color: lightgrey;
   color: #000000;
   border-top: 1px dashed #000000;
+  align-items: center;
+  display: flex;
+  
 }
 
 .past {
-  background-color: #d3d3d3;
+  background-color: #ff6961;
   color: white;
 }
 
 .present {
-  background-color: #ff6961;
+  background-color: #d3d3d3;
   color: white;
 }
 
@@ -63,9 +73,15 @@ textarea{
   border-bottom-right-radius: 15px;
   background-color: #06AED5;
   color: white;
+  height: 100%;
 }
 
 .saveBtn i:hover {
   font-size: 20px;
   transition: all .3s ease-in-out;
+}
+span.time-span {
+  min-width: 3rem;
+  display: inline-block;
+  margin: auto 1rem;
 }
